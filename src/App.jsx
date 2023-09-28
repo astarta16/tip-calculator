@@ -146,6 +146,12 @@ const App = () => {
   const tipAmount = (bill * tipPercentage) / 100 / numberOfPeople;
   const totalAmount = (bill + (bill * tipPercentage) / 100) / numberOfPeople;
 
+  const handleReset = () => {
+    setBill("");
+    setTipsPercentage(0);
+    setNumberOfPeople(0);
+  };
+
   return (
     <Container>
       <LogoContainer>
@@ -195,7 +201,7 @@ const App = () => {
               <Value>{totalAmount}</Value>
             </FlexContainer>
           </RightSideContent>
-          <ResetButton>Reset</ResetButton>
+          <ResetButton onClick={handleReset}>Reset</ResetButton>
         </RightSide>
       </Card>
     </Container>
