@@ -186,6 +186,13 @@ const App = () => {
               placeholder="Custom"
               min="0"
               max="100"
+              style={{
+                borderRadius: "5px",
+                background: "#F3F9FA",
+                color: "#547878",
+                padding: "10px",
+                border: "1px solid #ccc",
+              }}
             />
           </ButtonGroup>
 
