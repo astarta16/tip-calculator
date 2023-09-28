@@ -62,7 +62,7 @@ const InputLabel = styled.div`
 `;
 
 const Input = styled.input`
-  width: 100%;
+  width: 95%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
