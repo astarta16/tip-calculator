@@ -143,6 +143,8 @@ const App = () => {
   const [tipPercentage, setTipsPercentage] = useState(0);
   const [numberOfPeople, setNumberOfPeople] = useState(1);
 
+  const tipPercentages = [5, 10, 15, 20, 25];
+
   const tipAmount = (bill * tipPercentage) / 100 / numberOfPeople;
   const totalAmount = bill / numberOfPeople + tipAmount;
 
@@ -168,12 +170,13 @@ const App = () => {
 
           <InputLabel>Select Tip %</InputLabel>
           <ButtonGroup>
-            <TipButton onClick={() => setTipsPercentage(5)}>5%</TipButton>
-            <TipButton onClick={() => setTipsPercentage(10)}>10%</TipButton>
-            <TipButton onClick={() => setTipsPercentage(15)}>15%</TipButton>
-            <TipButton onClick={() => setTipsPercentage(20)}>20%</TipButton>
-            <TipButton onClick={() => setTipsPercentage(25)}>25%</TipButton>
-            <TipButton onClick={() => setTipsPercentage(0)}>Custom</TipButton>
+            {tipPercentages.map((percentage, index) => (
+              <TipButton
+                key={percentage}
+                onClick={() => setTipsPercentage(percentage)}>
+                {percentage}%
+              </TipButton>
+            ))}
           </ButtonGroup>
 
           <NumberOfPeopleLabel>Number of People</NumberOfPeopleLabel>
