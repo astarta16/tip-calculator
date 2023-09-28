@@ -6,9 +6,10 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   min-height: 100vh;
   background-color: #c5e4e7;
+  
 `;
 
 const LogoContainer = styled.div`
@@ -57,8 +58,10 @@ const RightSide = styled.div`
 `;
 
 const InputLabel = styled.div`
-  font-weight: bold;
   margin-bottom: 10px;
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-size: 16px;
 `;
 
 const Input = styled.input`
@@ -94,6 +97,9 @@ const TipButton = styled.button`
 const NumberOfPeopleLabel = styled.div`
   font-weight: bold;
   margin-bottom: 10px;
+  font-size: 16px;
+  font-family: 'Space Mono', monospace;
+
 `;
 
 const RightSideContent = styled.div`
@@ -108,6 +114,10 @@ const ResetButton = styled.button`
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
+  font-weight:bold;
+  font-family: Space Mono;
+  font-size: 20px;
+
 
   &:hover {
     background-color: #002426;
@@ -127,11 +137,15 @@ const Value = styled.h1`
 const Text = styled.h5`
   font-size: 16px;
   margin: 0;
+  font-family: 'Space Mono', monospace;
+  font-weight:700;
 `;
 
 const PersonText = styled.p`
   font-size: 14px;
   margin: 0;
+  color: #7F9D9F;
+  font-family: 'Space Mono', monospace;
 `;
 
 const FlexContainer = styled.div`
