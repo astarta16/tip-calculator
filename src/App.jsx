@@ -141,15 +141,15 @@ const FlexContainer = styled.div`
 const App = () => {
   const [bill, setBill] = useState("");
   const [tipPercentage, setTipsPercentage] = useState(0);
-  const [numberOfPeople, setNumberOfPeople] = useState(0);
+  const [numberOfPeople, setNumberOfPeople] = useState(1);
 
   const tipAmount = (bill * tipPercentage) / 100 / numberOfPeople;
-  const totalAmount = (bill + (bill * tipPercentage) / 100) / numberOfPeople;
+  const totalAmount = bill / numberOfPeople + tipAmount;
 
   const handleReset = () => {
     setBill("");
-    setTipsPercentage(0);
-    setNumberOfPeople(0);
+    setTipsPercentage(0.0);
+    setNumberOfPeople(1);
   };
 
   return (
@@ -185,21 +185,25 @@ const App = () => {
         </LeftSide>
         <RightSide>
           <RightSideContent>
-            <FlexContainer>
-              <div>
-                <Text>Tip Amount</Text>
-                <PersonText>/ person</PersonText>
-              </div>
-              <Value>{tipAmount}</Value>
-            </FlexContainer>
+            {numberOfPeople >= 0 && (
+              <>
+                <FlexContainer>
+                  <div>
+                    <Text>Tip Amount</Text>
+                    <PersonText>/ person</PersonText>
+                  </div>
+                  <Value>{tipAmount.toFixed(2)}</Value>
+                </FlexContainer>
 
-            <FlexContainer>
-              <div>
-                <Text>Total</Text>
-                <PersonText>/ person</PersonText>
-              </div>
-              <Value>{totalAmount}</Value>
-            </FlexContainer>
+                <FlexContainer>
+                  <div>
+                    <Text>Total</Text>
+                    <PersonText>/ person</PersonText>
+                  </div>
+                  <Value>{totalAmount.toFixed(2)}</Value>
+                </FlexContainer>
+              </>
+            )}
           </RightSideContent>
           <ResetButton onClick={handleReset}>Reset</ResetButton>
         </RightSide>
