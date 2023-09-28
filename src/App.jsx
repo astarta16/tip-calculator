@@ -121,6 +121,15 @@ const ResetButton = styled.button`
 const App = () => {
   const [bill, setBill] = useState("");
   const [tipPercentage, setTipsPercentage] = useState(0);
+  const [numberOfPeople, setNumberOfPeople] = useState(0);
+
+  const calculateTipAmount = () => {
+    return(bill * tipPercentage) /100;
+  };
+
+  const calculateTotalAmount = () => {
+    return (bill / numberOfPeople) + calculateTipAmount();
+  };
 
  
 
@@ -132,20 +141,20 @@ const App = () => {
       <Card>
         <LeftSide>
           <InputLabel>Bill</InputLabel>
-          <Input  value={bill} onChange={(event) => setBill(event.target.value)} type="text" defaultValue="0" />
+          <Input  value={bill} onChange={(event) => setBill(event.target.value)} type="text" />
 
           <InputLabel>Select Tip %</InputLabel>
           <ButtonGroup>
-            <TipButton>5%</TipButton>
-            <TipButton>10%</TipButton>
-            <TipButton>15%</TipButton>
-            <TipButton>20%</TipButton>
-            <TipButton>25%</TipButton>
-            <TipButton>Custom</TipButton>
+            <TipButton onClick={() => setTipsPercentage(5)}>5%</TipButton>
+            <TipButton onClick={() => setTipsPercentage(10)}>10%</TipButton>
+            <TipButton onClick={() => setTipsPercentage(15)}>15%</TipButton>
+            <TipButton onClick={() => setTipsPercentage(20)}>20%</TipButton>
+            <TipButton onClick={() => setTipsPercentage(25)}>25%</TipButton>
+            <TipButton onClick={() => setTipsPercentage(0)}>Custom</TipButton>
           </ButtonGroup>
 
           <NumberOfPeopleLabel>Number of People</NumberOfPeopleLabel>
-          <Input type="text" defaultValue="0" />
+          <Input value={numberOfPeople} onChange={(event) => setNumberOfPeople(event.target.value)} type="text" />
         </LeftSide>
         <RightSide>
           <RightSideContent>
