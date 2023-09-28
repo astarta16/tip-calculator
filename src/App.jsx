@@ -83,6 +83,8 @@ const TipButton = styled.button`
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
+  font-size: 16px;
+  width: 100%;
 
   &:hover {
     background-color: #87a6a9;
@@ -177,13 +179,21 @@ const App = () => {
                 {percentage}%
               </TipButton>
             ))}
+            <input
+              type="number"
+              value={tipPercentage === 0 ? "" : tipPercentage}
+              onChange={(event) => setTipsPercentage(event.target.value)}
+              placeholder="Custom"
+              min="0"
+              max="100"
+            />
           </ButtonGroup>
 
           <NumberOfPeopleLabel>Number of People</NumberOfPeopleLabel>
           <Input
             value={numberOfPeople}
             onChange={(event) => setNumberOfPeople(event.target.value)}
-            type="text"
+            type="number"
           />
         </LeftSide>
         <RightSide>
