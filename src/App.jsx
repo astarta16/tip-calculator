@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import Logo from './assets/logo.svg';
+import React, { useState } from "react";
+import styled from "styled-components";
+import Logo from "./assets/logo.svg";
 
 const Container = styled.div`
   display: flex;
@@ -8,7 +8,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: flex-start;
   min-height: 100vh;
-  background-color: #C5E4E7;
+  background-color: #c5e4e7;
 `;
 
 const LogoContainer = styled.div`
@@ -35,7 +35,7 @@ const Card = styled.div`
 
 const LeftSide = styled.div`
   width: 100%;
-  padding:30px;
+  padding: 30px;
   @media (min-width: 768px) {
     width: 60%;
   }
@@ -43,17 +43,16 @@ const LeftSide = styled.div`
 
 const RightSide = styled.div`
   width: 100%;
-  background-color: #00474B;
+  background-color: #00474b;
   color: white;
   border-radius: 10px;
-  text-align: center;
   display: flex;
   flex-direction: column;
-  padding:10px;
+  padding: 10px;
   @media (min-width: 768px) {
     width: 40%;
     margin-left: 20px;
-   padding: 50px;
+    padding: 50px;
   }
 `;
 
@@ -80,13 +79,13 @@ const ButtonGroup = styled.div`
 const TipButton = styled.button`
   padding: 10px;
   border: none;
-  background-color: #C5E4E7;
+  background-color: #c5e4e7;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: #87A6A9;
+    background-color: #87a6a9;
   }
 `;
 
@@ -96,7 +95,7 @@ const NumberOfPeopleLabel = styled.div`
 `;
 
 const RightSideContent = styled.div`
-  margin-bottom: 30px; 
+  margin-bottom: 30px;
 `;
 
 const ResetButton = styled.button`
@@ -113,9 +112,30 @@ const ResetButton = styled.button`
   }
 
   @media (min-width: 768px) {
-    margin-top: 30px; 
-    margin-bottom: 0; 
+    margin-top: 30px;
+    margin-bottom: 0;
   }
+`;
+
+const Value = styled.h1`
+  margin-left: 30px;
+  font-size: 24px;
+`;
+
+const Text = styled.h5`
+  font-size: 16px;
+  margin: 0;
+`;
+
+const PersonText = styled.p`
+  font-size: 14px;
+  margin: 0;
+`;
+
+const FlexContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 const App = () => {
@@ -123,15 +143,8 @@ const App = () => {
   const [tipPercentage, setTipsPercentage] = useState(0);
   const [numberOfPeople, setNumberOfPeople] = useState(0);
 
-  const calculateTipAmount = () => {
-    return(bill * tipPercentage) /100;
-  };
-
-  const calculateTotalAmount = () => {
-    return (bill / numberOfPeople) + calculateTipAmount();
-  };
-
- 
+  const tipAmount = (bill * tipPercentage) / 100 / numberOfPeople;
+  const totalAmount = (bill + (bill * tipPercentage) / 100) / numberOfPeople;
 
   return (
     <Container>
@@ -141,7 +154,11 @@ const App = () => {
       <Card>
         <LeftSide>
           <InputLabel>Bill</InputLabel>
-          <Input  value={bill} onChange={(event) => setBill(event.target.value)} type="text" />
+          <Input
+            value={bill}
+            onChange={(event) => setBill(event.target.value)}
+            type="text"
+          />
 
           <InputLabel>Select Tip %</InputLabel>
           <ButtonGroup>
@@ -154,12 +171,29 @@ const App = () => {
           </ButtonGroup>
 
           <NumberOfPeopleLabel>Number of People</NumberOfPeopleLabel>
-          <Input value={numberOfPeople} onChange={(event) => setNumberOfPeople(event.target.value)} type="text" />
+          <Input
+            value={numberOfPeople}
+            onChange={(event) => setNumberOfPeople(event.target.value)}
+            type="text"
+          />
         </LeftSide>
         <RightSide>
           <RightSideContent>
-            <div>Tip Amount / Person</div>
-            <div style={{ marginTop: '50px' }}>Total / Person</div>
+            <FlexContainer>
+              <div>
+                <Text>Tip Amount</Text>
+                <PersonText>/ person</PersonText>
+              </div>
+              <Value>{tipAmount}</Value>
+            </FlexContainer>
+
+            <FlexContainer>
+              <div>
+                <Text>Total</Text>
+                <PersonText>/ person</PersonText>
+              </div>
+              <Value>{totalAmount}</Value>
+            </FlexContainer>
           </RightSideContent>
           <ResetButton>Reset</ResetButton>
         </RightSide>
