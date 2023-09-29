@@ -215,6 +215,7 @@ const App = () => {
             value={numberOfPeople}
             onChange={(event) => setNumberOfPeople(event.target.value)}
             type="number"
+            min="0"
           />
         </LeftSide>
         <RightSide>
