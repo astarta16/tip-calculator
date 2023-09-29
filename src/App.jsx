@@ -226,7 +226,7 @@ const App = () => {
                     <Text>Tip Amount</Text>
                     <PersonText>/ person</PersonText>
                   </div>
-                  <Value>{tipAmount.toFixed(2)}</Value>
+                  <Value> {numberOfPeople == 0 ? "0.00" : tipAmount.toFixed(2)}</Value>
                 </FlexContainer>
 
                 <FlexContainer>
@@ -234,7 +234,7 @@ const App = () => {
                     <Text>Total</Text>
                     <PersonText>/ person</PersonText>
                   </div>
-                  <Value>{totalAmount.toFixed(2)}</Value>
+                  <Value> {numberOfPeople == 0 ? "0.00" : totalAmount.toFixed(2)}</Value>
                 </FlexContainer>
               </>
             )}
